@@ -1,0 +1,19 @@
+version: "3.0"
+services:
+  ebs_teste:
+    container_name: ebs_teste
+    hostname: ebs_teste
+    image: nginx
+    networks: 
+      - dev-network
+    volumes:
+      - "ebs_volume:/mnt/docker-ebs"
+networks:
+  dev-network:
+    external: 
+      name: devnet
+volumes:
+  ebs_volume:
+    driver: edimarlnx/docker-ebs-volume
+    driver_opts:
+      volume-id: vol-096c446c9b7d30628
